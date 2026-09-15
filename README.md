@@ -3,7 +3,7 @@
 -------------
 Team ONE
 ------------
-wahaj Alshahran,
+Wahaj Alshahran,
 Sharifah AlDakheel,
 Ghada Alaidi,
 Ranya Alsagabi,
