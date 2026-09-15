@@ -1,51 +1,93 @@
-# Which AI Tool Is Right for You? — Bilingual Assessment App
 
-A single-file, static, client-side web app: a 14-question quiz that recommends
-an AI-tool category (Research, Writing, Coding, Design, or Data & Document
-Analysis) based on the user's answers. Fully bilingual (English/Arabic, with
-correct LTR/RTL layout switching).
+🤖 Which AI Tool Is Right for You?
+Team ONE
+wahaj Alshahran
+Sharifah AlDakheel
+Ghada Alaidi
+Ranya Alsagabi
+Luluwah Alhussaini
+Ghadi Algethami
+Ghaida Aldossary
+Razan ALAnizi
+
+
+
+SDAIA Academy
+Program: [Vibe Coding]
+SDAIA Academy GitHub: https://github.com/SDAIA-Academy
+
+About the Project
+A bilingual interactive web application that helps users identify the most suitable AI tool category for their needs through a short 14-question assessment.
+The application is designed for students, graduates, employees, entrepreneurs and anyone interested in using AI tools.
 
 ## Running it
-No build step, no server, no dependencies. Just open `index.html` in any
-modern browser (double-click it, or serve the folder with any static file
-server, e.g. `npx serve .`).
+Live Demo
+[Click here to open the project](https://whj24786-lab.github.io/MyTool/)
 
-## Project structure
-- `index.html` — the entire application: HTML, CSS, and JavaScript in one
-  file (structure, styling, translations, question bank, scoring logic, and
-  rendering all live here).
+Features:
+• 14-question assessment
+• Arabic and English support
+• RTL/LTR layout switching
+• Progress indicator
+• Next / Previous navigation
+•  Personalized AI tool category recommendation
+• LocalStorage for saving progress and results
+• Start Over functionality
+• Responsive design
+• About the Test section
 
-## Editing the quiz content
-- All question and answer text (English + Arabic) lives in the `T` object
-  near the top of the `<script>` block, under `T.en.questions` and
-  `T.ar.questions`.
-- Category names, "why" explanations, suggested skills, and level
-  descriptions live in `T.en.categories` / `T.ar.categories` and
-  `T.en.levels` / `T.ar.levels`.
+🧠 How It Works
+The user answers 14 questions about their needs and intended use of AI tools The application analyzes the answers using predefined scoring and recommendation rules then provides a suitable AI tool category.
 
-## Editing the scoring logic
-- The `QUESTIONS` array (just above `T`) defines all 14 questions and their
-  answer options. Each option can carry:
-  - `scores: { categoryKey: points }` — contributes points toward one or
-    more of the five categories (`research`, `writing`, `coding`, `design`,
-    `data`).
-  - `level: 1 | 2 | 3` — contributes to the estimated experience level
-    (beginner / intermediate / advanced), averaged across all
-    level-carrying answers.
-- `computeResults()` sums these up, picks the highest-scoring category, and
-  rounds the average level. Adjust point values directly in `QUESTIONS` to
-  retune the recommendation logic — no other code needs to change.
+User Flow:
+Landing Page → Assessment → Answer Analysis → Results
+Technologies Used:
+• HTML5 — Application structure
+• CSS3 — Styling and responsive design
+• JavaScript — Interaction, navigation, and recommendation logic
+• LocalStorage — Saving progress and results
+• GitHub — Version control and project hosting
+📂 Project Structure
+Which-AI-Tool-Is-Right-for-You/
+│
+├── index.html
+├── style.css
+├── script.js
+├── assets/
+│   └── images/
+└── README.md
 
-## Data & privacy
-- No backend, no database, no authentication, no API keys, no analytics.
-- Progress and results are saved only in the browser's `localStorage` on the
-  user's device, and are cleared via the "Start Over" button.
-- Note: some sandboxed preview environments (like an in-chat AI assistant
-  preview) block real `localStorage`. The app detects this and transparently
-  falls back to an in-memory store for that session, so it still works —
-  when opened as a normal local file or hosted normally, real `localStorage`
-  is used and progress persists across reloads.
+Language Support
+The application supports:
+• 🇬🇧 English — LTR
+• 🇸🇦 العربية — RTL
+Users can switch between the two languages while using the application.
 
-## Browser support
-Vanilla JS (ES5-leaning, no build tooling), works in all modern evergreen
-browsers.
+Recommendation System:
+The recommendation is based on the user’s answers and predefined scoring and recommendation rules to identify the AI tool category that best matches their needs.
+
+ LocalStorage:
+LocalStorage is used to preserve relevant assessment information including user progress and results No account or server-side database is required.
+
+Getting Started: 
+1. Clone the repository.
+2. Open the project in Visual Studio Code.
+3. Open index.html in a web browser or use Live Server.
+Application Pages:
+1. Landing Page — Introduces the assessment and allows the user to start.
+2. Assessment — Contains 14 questions, navigation and a progress indicator.
+3. Results Page — Displays the recommended AI tool category.
+4. About the Test — Explains the assessment and recommendation process.
+
+Project Purpose :
+The project provides a simple and engaging way for users to identify the type of AI tools that may best fit their needs through a short interactive 
+assessment.
+
+Future Improvements
+ Adding more AI tool categories.
+
+
+
+
+
+
