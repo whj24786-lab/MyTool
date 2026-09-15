@@ -23,7 +23,6 @@ A bilingual interactive web application that helps users identify the most suita
 The application is designed for students, graduates, employees, entrepreneurs and anyone interested in using AI tools.
 
 ## Running it
-Live Demo
 [Click here to open the project](https://whj24786-lab.github.io/MyTool/)
 -------------
 
