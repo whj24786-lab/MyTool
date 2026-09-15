@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which AI Tool Is Right for You?</title>
+<style>
+  :root{
+    --color-bg: #f6f7fb;
+    --color-surface: #ffffff;
+    --color-primary: #4f46e5;
+    --color-primary-dark: #3f3adb;
+    --color-primary-soft: #eef0fd;
+    --color-text: #1f2330;
+    --color-text-muted: #5b6072;
+    --color-border: #e3e5ee;
+    --color-success: #1a8a5a;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 10px rgba(20,20,50,0.06), 0 1px 2px rgba(20,20,50,0.04);
+    --max-width: 760px;
+    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0; padding:0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-stack);
+    line-height: 1.55;
+  }
+
+  body{
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  [dir="rtl"]{ text-align: right; }
+
+  a{ color: var(--color-primary); }
+
+  button{ font-family: inherit; }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* Header */
+  header.site-header{
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .header-inner{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+  }
+  .brand{
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text);
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand-mark{
+    width: 28px; height:28px; border-radius:8px;
+    background: linear-gradient(135deg, var(--color-primary), #7c73f0);
+    flex-shrink:0;
+  }
+  nav.main-nav{
+    display:flex;
+    align-items:center;
+    gap: 6px;
+  }
+  nav.main-nav button.nav-link{
+    background:none; border:none; cursor:pointer;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+  }
+  nav.main-nav button.nav-link:hover,
+  nav.main-nav button.nav-link.active{
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
+  button.lang-switch{
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding: 7px 12px;
+    border-radius: 999px;
+    cursor:pointer;
+    font-size: 0.85rem;
+    font-weight:600;
+  }
+  button.lang-switch:hover{ border-color: var(--color-primary); color: var(--color-primary); }
+
+  /* Main layout */
+  main{
+    flex:1;
+    width:100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  .card{
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+
+  @media (max-width: 480px){
+    .card{ padding: 20px; }
+    main{ padding: 20px 14px 48px; }
+  }
+
+  /* Landing */
+  .landing-hero h1{
+    font-size: 1.7rem;
+    margin: 0 0 10px;
+  }
+  .landing-hero p.tagline{
+    color: var(--color-text-muted);
+    font-size: 1.02rem;
+    margin: 0 0 22px;
+  }
+  .info-row{
+    display:flex;
+    gap: 14px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .info-pill{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 13px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor:pointer;
+    transition: background-color .15s ease, transform .05s ease;
+  }
+  .btn-primary{
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .btn-primary:hover{ background: var(--color-primary-dark); }
+  .btn-primary:active{ transform: scale(0.99); }
+  .btn-primary:disabled{
+    background: #c9cbe0;
+    cursor:not-allowed;
+  }
+  .btn-secondary{
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+  .btn-secondary:hover{ border-color: var(--color-primary); color: var(--color-primary); }
+  .btn-danger-outline{
+    background: var(--color-surface);
+    color: #b8402a;
+    border: 1px solid #f1c9bd;
+  }
+  .btn-danger-outline:hover{ background: #fdf1ee; }
+
+  .privacy-note{
+    margin-top: 18px;
+    font-size: 0.86rem;
+    color: var(--color-text-muted);
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+  }
+
+  .nav-buttons{
+    display:flex;
+    justify-content:space-between;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  [dir="rtl"] .nav-buttons{ flex-direction: row-reverse; }
+
+  /* Quiz */
+  .quiz-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom: 10px;
+    font-size: 0.86rem;
+    color: var(--color-text-muted);
+    font-weight:600;
+  }
+  .progress-track{
+    height: 8px;
+    background: var(--color-border);
+    border-radius: 999px;
+    overflow:hidden;
+    margin-bottom: 22px;
+  }
+  .progress-fill{
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 999px;
+    transition: width .25s ease;
+  }
+  .question-text{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 18px;
+  }
+  .options-list{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .option-item label{
+    display:flex;
+    align-items:flex-start;
+    gap: 12px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 13px 14px;
+    cursor:pointer;
+    transition: border-color .12s ease, background-color .12s ease;
+  }
+  .option-item label:hover{ border-color: var(--color-primary); background: var(--color-primary-soft); }
+  .option-item input[type="radio"]{
+    margin-top: 3px;
+    accent-color: var(--color-primary);
+    width: 17px; height: 17px;
+    flex-shrink:0;
+  }
+  .option-item input[type="radio"]:checked + span{ font-weight:600; }
+  .option-item:has(input:checked) label{
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+  }
+  .validation-msg{
+    color:#b8402a;
+    font-size: 0.86rem;
+    margin-top: 14px;
+    min-height: 1.2em;
+  }
+
+  /* Results */
+  .result-badge{
+    display:inline-block;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+    font-weight:700;
+    font-size: 0.8rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .result-category{
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 0 14px;
+    color: var(--color-primary-dark);
+  }
+  .result-section{
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+  }
+  .result-section h3{
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing:.03em;
+    color: var(--color-text-muted);
+    margin: 0 0 10px;
+  }
+  .result-section p{ margin: 0; }
+  .skills-list{ margin: 6px 0 0; padding-inline-start: 20px; }
+  .skills-list li{ margin-bottom: 6px; }
+  .criteria-list{ margin: 6px 0 0; padding-inline-start: 20px; }
+  .criteria-list li{ margin-bottom: 6px; }
+
+  .score-bars{ margin-top: 10px; display:flex; flex-direction:column; gap:10px; }
+  .score-bar-row{ display:flex; align-items:center; gap:10px; font-size:0.85rem; }
+  .score-bar-label{ width: 140px; flex-shrink:0; color: var(--color-text-muted); }
+  .score-bar-track{ flex:1; background: var(--color-border); border-radius:999px; height:8px; overflow:hidden; }
+  .score-bar-fill{ height:100%; background: var(--color-primary); border-radius:999px; }
+  .score-bar-value{ width: 26px; text-align:end; color: var(--color-text-muted); flex-shrink:0; }
+
+  .disclaimer-box{
+    margin-top: 22px;
+    background: #fff8ec;
+    border: 1px solid #f2e2bd;
+    color: #7a5a10;
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-size: 0.88rem;
+  }
+
+  .result-actions{
+    display:flex;
+    gap: 12px;
+    margin-top: 26px;
+    flex-wrap: wrap;
+  }
+
+  .storage-note{
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+
+  /* About page */
+  .about-section{ margin-bottom: 22px; }
+  .about-section:last-child{ margin-bottom: 0; }
+  .about-section h2{ font-size: 1.05rem; margin: 0 0 8px; }
+  .about-section p{ margin: 0; color: var(--color-text); }
+
+  footer.site-footer{
+    text-align:center;
+    color: var(--color-text-muted);
+    font-size: 0.82rem;
+    padding: 18px 20px 30px;
+  }
+
+  @media (max-width: 480px){
+    .score-bar-label{ width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <span class="brand"><span class="brand-mark" aria-hidden="true"></span><span id="brandText"></span></span>
+    <nav class="main-nav" aria-label="Primary">
+      <button type="button" class="nav-link" id="navHomeBtn"></button>
+      <button type="button" class="nav-link" id="navAboutBtn"></button>
+      <button type="button" class="lang-switch" id="langSwitchBtn"></button>
+    </nav>
+  </div>
+</header>
+
+<main id="app" role="main"></main>
+
+<footer class="site-footer" id="siteFooter"></footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------------------------------------------------
+   STORAGE LAYER
+   Tries real localStorage first (works when this file is
+   opened/run as a normal local HTML file in a browser).
+   Falls back to an in-memory object if localStorage is
+   unavailable or blocked (e.g. inside a sandboxed preview),
+   so the app still works for the current session.
+--------------------------------------------------------- */
+var STORAGE_KEY = "aiToolQuiz.state.v1";
+var memoryStore = {};
+
+function storageIsAvailable(){
+  try{
+    var t = "__aiToolQuiz_test__";
+    window.localStorage.setItem(t, t);
+    window.localStorage.removeItem(t);
+    return true;
+  }catch(e){
+    return false;
+  }
+}
+var HAS_LS = storageIsAvailable();
+
+function persistState(state){
+  try{
+    var json = JSON.stringify(state);
+    if(HAS_LS){
+      window.localStorage.setItem(STORAGE_KEY, json);
+    }else{
+      memoryStore[STORAGE_KEY] = json;
+    }
+  }catch(e){
+    memoryStore[STORAGE_KEY] = JSON.stringify(state);
+  }
+}
+
+function readState(){
+  try{
+    var json = HAS_LS ? window.localStorage.getItem(STORAGE_KEY) : memoryStore[STORAGE_KEY];
+    return json ? JSON.parse(json) : null;
+  }catch(e){
+    return null;
+  }
+}
+
+function clearPersistedState(){
+  try{
+    if(HAS_LS){ window.localStorage.removeItem(STORAGE_KEY); }
+    delete memoryStore[STORAGE_KEY];
+  }catch(e){
+    delete memoryStore[STORAGE_KEY];
+  }
+}
+
+/* ---------------------------------------------------------
+   QUESTION + SCORING DATA
+   Each question option carries either:
+     - scores: { categoryKey: points, ... } contributing to
+       the 5 AI-tool categories, and/or
+     - level: 1 | 2 | 3, contributing to the experience level.
+   Edit the point values below to tune the recommendation
+   logic — the rest of the app just sums what's here.
+--------------------------------------------------------- */
+var CATEGORIES = ["research","writing","coding","design","data"];
+
+var QUESTIONS = [
+  { id:1,  key:"q1",  options:[
+    {key:"o1", scores:{research:3}},
+    {key:"o2", scores:{writing:3}},
+    {key:"o3", scores:{coding:3}},
+    {key:"o4", scores:{design:3}},
+    {key:"o5", scores:{data:3}}
+  ]},
+  { id:2,  key:"q2",  options:[
+    {key:"o1", scores:{research:2}},
+    {key:"o2", scores:{writing:2}},
+    {key:"o3", scores:{coding:2}},
+    {key:"o4", scores:{design:2}},
+    {key:"o5", scores:{data:2}}
+  ]},
+  { id:3,  key:"q3",  options:[
+    {key:"o1", scores:{research:2}},
+    {key:"o2", scores:{writing:2}},
+    {key:"o3", scores:{coding:2}},
+    {key:"o4", scores:{design:2}},
+    {key:"o5", scores:{data:2}}
+  ]},
+  { id:4,  key:"q4",  options:[
+    {key:"o1", level:1},
+    {key:"o2", level:1},
+    {key:"o3", level:2},
+    {key:"o4", level:3}
+  ]},
+  { id:5,  key:"q5",  options:[
+    {key:"o1", scores:{research:2}},
+    {key:"o2", scores:{writing:2}},
+    {key:"o3", scores:{coding:2}},
+    {key:"o4", scores:{design:2}},
+    {key:"o5", scores:{data:2}}
+  ]},
+  { id:6,  key:"q6",  options:[
+    {key:"o1", level:1},
+    {key:"o2", level:2},
+    {key:"o3", level:3}
+  ]},
+  { id:7,  key:"q7",  options:[
+    {key:"o1", scores:{research:2}},
+    {key:"o2", scores:{writing:2}},
+    {key:"o3", scores:{coding:2}},
+    {key:"o4", scores:{design:2}},
+    {key:"o5", scores:{data:2}}
+  ]},
+  { id:8,  key:"q8",  options:[
+    {key:"o1", scores:{research:3}},
+    {key:"o2", scores:{writing:1}},
+    {key:"o3", scores:{coding:1}},
+    {key:"o4", scores:{design:1}},
+    {key:"o5", scores:{data:2}}
+  ]},
+  { id:9,  key:"q9",  options:[
+    {key:"o1", scores:{writing:3}},
+    {key:"o2", scores:{design:3}},
+    {key:"o3", scores:{coding:2}},
+    {key:"o4", scores:{research:2}},
+    {key:"o5", scores:{data:2}}
+  ]},
+  { id:10, key:"q10", options:[
+    {key:"o1", level:1},
+    {key:"o2", level:2},
+    {key:"o3", level:3}
+  ]},
+  { id:11, key:"q11", options:[
+    {key:"o1", scores:{research:1}},
+    {key:"o2", scores:{writing:1}},
+    {key:"o3", scores:{coding:1}},
+    {key:"o4", scores:{design:1}},
+    {key:"o5", scores:{data:1}}
+  ]},
+  { id:12, key:"q12", options:[
+    {key:"o1", scores:{research:2}},
+    {key:"o2", scores:{writing:2}},
+    {key:"o3", scores:{coding:2}},
+    {key:"o4", scores:{design:2}},
+    {key:"o5", scores:{data:2}}
+  ]},
+  { id:13, key:"q13", options:[
+    {key:"o1", scores:{data:1}},
+    {key:"o2", scores:{writing:1}},
+    {key:"o3", scores:{research:1}},
+    {key:"o4", scores:{}}
+  ]},
+  { id:14, key:"q14", options:[
+    {key:"o1", scores:{research:2}},
+    {key:"o2", scores:{writing:2}},
+    {key:"o3", scores:{coding:2}},
+    {key:"o4", scores:{design:2}},
+    {key:"o5", scores:{data:2}}
+  ]}
+];
+
+/* ---------------------------------------------------------
+   TRANSLATIONS
+--------------------------------------------------------- */
+var T = {
+en: {
+  dir: "ltr",
+  appName: "Which AI Tool Is Right for You?",
+  brandShort: "AI Tool Finder",
+  navHome: "Home",
+  navAbout: "About This Test",
+  langSwitchLabel: "العربية",
+  tagline: "A quick, private assessment to point you toward the right category of AI tool for your goals.",
+  questionsCount: "This assessment contains 14 short questions and takes about 3–5 minutes.",
+  privacyNoteLanding: "Your answers stay on this device. Nothing is sent to a server.",
+  startTest: "Start the Test",
+  questionLabel: "Question",
+  ofLabel: "of",
+  prev: "Previous",
+  next: "Next",
+  seeResults: "See My Results",
+  selectPrompt: "Please select an answer to continue.",
+  resultsTitle: "Your Recommendation",
+  resultsBadge: "Assessment Complete",
+  recommendedCategory: "Recommended Category",
+  whySelected: "Why This Was Selected",
+  comparisonCriteria: "How This Was Compared",
+  scoreBreakdown: "Score Breakdown",
+  yourLevel: "Your Level",
+  suggestedSkills: "Skills Worth Developing",
+  disclaimer: "This guidance is based on your answers and is meant to point you in a useful direction — it does not claim that any single AI tool is universally the best for everyone.",
+  startOver: "Start Over",
+  startOverConfirm: "This will clear your saved answers from this device and return you to the beginning. Continue?",
+  storageNote: "Results are stored only in this browser, on this device. Using a different browser or device — or clearing your browser data — will not carry them over.",
+  resumeNote: "Welcome back — we restored your progress from this device.",
+  aboutTitle: "About This Test",
+  aboutPurposeTitle: "Purpose",
+  aboutPurposeText: "This assessment helps you understand which category of AI tool — research, writing, coding, design, or data & document analysis — is likely to fit your goals best, based on how you work and think. It's a starting point for exploring AI tools, not a final verdict.",
+  aboutHowTitle: "How the Recommendation Works",
+  aboutHowText: "As you answer the 14 questions, each answer contributes points to one or more of the five tool categories, and some answers also help estimate your experience level. All of this scoring happens locally in your browser: the category with the highest total is shown as your recommendation, along with your estimated level and a few skills worth developing next.",
+  aboutPrivacyTitle: "Privacy Approach",
+  aboutPrivacyText: "This test doesn't require an account, doesn't send any data to a server, and doesn't use any API keys or cloud storage. Your progress and results are saved only in your browser's local storage on this device, and you can clear them at any time using \"Start Over.\" The questions are kept general and don't ask for sensitive personal information.",
+  footerPrivacy: "No account, no server, no tracking — everything happens in your browser.",
+  levels: {
+    beginner: "Beginner — you're just starting to explore AI tools. Start with simple, guided tasks and short prompts.",
+    intermediate: "Intermediate — you're comfortable using AI tools for everyday tasks and are ready to try more structured prompts.",
+    advanced: "Advanced — you're experienced and ready to explore more advanced features, integrations, or workflows."
+  },
+  levelNames: { beginner: "Beginner", intermediate: "Intermediate", advanced: "Advanced" },
+  categories: {
+    research: {
+      name: "Research & Fact-Finding Tools",
+      why: "Your answers point toward tasks where trustworthy, well-sourced information matters most — comparing viewpoints, fact-checking, and synthesizing what you find. Tools built for research and structured search tend to fit this kind of work well.",
+      skills: ["Advanced search and source-evaluation skills","Prompting techniques for fact-checking","Synthesizing information from multiple sources","Building consistent citation and verification habits"]
+    },
+    writing: {
+      name: "Writing & Content Tools",
+      why: "Your answers lean toward producing clear, polished written content — from short messages to longer pieces. Tools focused on drafting, editing, and refining text tend to fit this kind of work well.",
+      skills: ["Prompting for tone, style, and audience","Editing and refining AI-generated drafts","Structuring longer pieces of writing","Developing a consistent personal voice"]
+    },
+    coding: {
+      name: "Coding & Automation Tools",
+      why: "Your answers point toward building or automating things — scripts, small apps, or repetitive technical workflows. Tools focused on generating and explaining code tend to fit this kind of work well.",
+      skills: ["Prompt patterns for code generation","Reviewing and testing AI-generated code","Basic debugging and version-control habits","Breaking tasks into automatable steps"]
+    },
+    design: {
+      name: "Design & Creative Tools",
+      why: "Your answers lean toward visual and creative thinking — turning ideas into layouts, mockups, or visual concepts. Tools focused on image and design generation tend to fit this kind of work well.",
+      skills: ["Describing visual concepts clearly in prompts","Iterating on AI-generated design drafts","Core design principles (layout, color, hierarchy)","Combining AI drafts with your own creative direction"]
+    },
+    data: {
+      name: "Data & Document Analysis Tools",
+      why: "Your answers point toward making sense of numbers, spreadsheets, or documents — spotting patterns and supporting decisions with evidence. Tools focused on data and document analysis tend to fit this kind of work well.",
+      skills: ["Structuring data before analysis","Asking clear, specific analytical questions","Validating AI-generated calculations","Building core spreadsheet and data literacy"]
+    }
+  },
+  comparisonCriteriaList: [
+    "Accuracy and sourcing needs",
+    "Creative vs. technical focus",
+    "Preferred output format",
+    "Experience level with AI tools",
+    "Comfort with technical tools"
+  ],
+  questions: {
+    q1_text: "What best describes the main outcome you want from AI help?",
+    q1_o1: "Finding accurate information and synthesizing sources",
+    q1_o2: "Producing written content, like emails, articles, or stories",
+    q1_o3: "Building or automating something, like scripts, apps, or workflows",
+    q1_o4: "Creating visual concepts or design ideas",
+    q1_o5: "Making sense of spreadsheets, numbers, or documents",
+
+    q2_text: "Which task sounds most like your day-to-day work or studies?",
+    q2_o1: "Reading papers, comparing viewpoints, and fact-checking",
+    q2_o2: "Drafting reports, posts, or creative writing",
+    q2_o3: "Writing or debugging code",
+    q2_o4: "Sketching layouts, visuals, or user experiences",
+    q2_o5: "Analyzing datasets or reviewing documents and contracts",
+
+    q3_text: "When you imagine using an AI tool, what excites you most?",
+    q3_o1: "Getting well-sourced, trustworthy answers",
+    q3_o2: "Turning ideas into polished text quickly",
+    q3_o3: "Automating repetitive technical tasks",
+    q3_o4: "Generating visual or creative concepts",
+    q3_o5: "Spotting patterns and insights in data",
+
+    q4_text: "How would you describe your overall experience using AI tools?",
+    q4_o1: "I've never used one before",
+    q4_o2: "I've used one a few times, casually",
+    q4_o3: "I use AI tools regularly for simple tasks",
+    q4_o4: "I use AI tools often and explore advanced features",
+
+    q5_text: "Which output format matters most to you?",
+    q5_o1: "A well-organized summary with sources",
+    q5_o2: "Ready-to-send text, like an email or document",
+    q5_o3: "Working code or an automated process",
+    q5_o4: "A visual mockup, image, or design draft",
+    q5_o5: "A clear chart, table, or analysis",
+
+    q6_text: "How comfortable are you with technical tools, like spreadsheets, code, or settings menus?",
+    q6_o1: "Not comfortable at all",
+    q6_o2: "Somewhat comfortable with the basics",
+    q6_o3: "Very comfortable — I dig into settings and tools often",
+
+    q7_text: "What kind of project are you most likely to start this month?",
+    q7_o1: "A research summary or literature review",
+    q7_o2: "A blog post, newsletter, or story",
+    q7_o3: "A small app, script, or automation",
+    q7_o4: "A poster, UI mockup, or brand concept",
+    q7_o5: "A budget, report, or data clean-up",
+
+    q8_text: "How important is factual accuracy and citing sources for your work?",
+    q8_o1: "Extremely important — I need to trust every claim",
+    q8_o2: "Important, but polish and tone matter just as much",
+    q8_o3: "Important for correctness of logic, more than sources",
+    q8_o4: "Less important — I care more about visual impact",
+    q8_o5: "Extremely important — decisions depend on the numbers",
+
+    q9_text: "Which best matches how you like to communicate ideas?",
+    q9_o1: "Through clear, well-structured written explanations",
+    q9_o2: "Through visuals, layouts, and imagery",
+    q9_o3: "Through working prototypes or demos",
+    q9_o4: "Through evidence and cited findings",
+    q9_o5: "Through charts and structured data",
+
+    q10_text: "How often do you use digital or AI tools in general, of any kind?",
+    q10_o1: "Rarely",
+    q10_o2: "A few times a week",
+    q10_o3: "Daily, across many tools",
+
+    q11_text: "If you had a free afternoon to learn something new, you'd pick...",
+    q11_o1: "A new research or fact-checking technique",
+    q11_o2: "A writing or storytelling course",
+    q11_o3: "A coding or automation tutorial",
+    q11_o4: "A design or visual tool",
+    q11_o5: "A data analysis or spreadsheet skill",
+
+    q12_text: "Which sentence sounds most like you?",
+    q12_o1: "I want to double-check claims before I trust them.",
+    q12_o2: "I want my words to sound clear and persuasive.",
+    q12_o3: "I want the computer to handle repetitive work for me.",
+    q12_o4: "I want things to look good and feel intuitive.",
+    q12_o5: "I want to understand what the numbers are telling me.",
+
+    q13_text: "How do you feel about sharing general, non-sensitive documents or notes with an AI tool to get help?",
+    q13_o1: "Very comfortable, as long as nothing sensitive is included",
+    q13_o2: "Somewhat comfortable — I'd remove sensitive details first",
+    q13_o3: "I prefer to keep things minimal and generic",
+    q13_o4: "I'm not sure yet",
+
+    q14_text: "What would make you feel most successful after using an AI tool?",
+    q14_o1: "I learned something accurate and well-supported",
+    q14_o2: "I produced writing I'm proud of",
+    q14_o3: "I built or fixed something technical",
+    q14_o4: "I created something visually compelling",
+    q14_o5: "I made a confident, data-backed decision"
+  }
+},
+ar: {
+  dir: "rtl",
+  appName: "أي أداة ذكاء اصطناعي تناسبك؟",
+  brandShort: "دليل أدوات الذكاء الاصطناعي",
+  navHome: "الرئيسية",
+  navAbout: "عن هذا الاختبار",
+  langSwitchLabel: "English",
+  tagline: "تقييم سريع وخاص يوجهك نحو فئة أداة الذكاء الاصطناعي المناسبة لأهدافك.",
+  questionsCount: "يتضمن هذا التقييم 14 سؤالاً قصيرًا ويستغرق حوالي 3 إلى 5 دقائق.",
+  privacyNoteLanding: "تبقى إجاباتك على هذا الجهاز فقط. لا يتم إرسال أي شيء إلى خادم.",
+  startTest: "ابدأ الاختبار",
+  questionLabel: "سؤال",
+  ofLabel: "من",
+  prev: "السابق",
+  next: "التالي",
+  seeResults: "عرض نتيجتي",
+  selectPrompt: "يرجى اختيار إجابة للمتابعة.",
+  resultsTitle: "توصيتك",
+  resultsBadge: "اكتمل التقييم",
+  recommendedCategory: "الفئة الموصى بها",
+  whySelected: "لماذا تم اختيار هذه الفئة",
+  comparisonCriteria: "كيف تمت المقارنة",
+  scoreBreakdown: "تفصيل النقاط",
+  yourLevel: "مستواك",
+  suggestedSkills: "مهارات تستحق التطوير",
+  disclaimer: "تستند هذه التوصية إلى إجاباتك، والهدف منها توجيهك بشكل مفيد — وهي لا تدّعي أن أداة ذكاء اصطناعي واحدة هي الأفضل للجميع بشكل مطلق.",
+  startOver: "البدء من جديد",
+  startOverConfirm: "سيؤدي هذا إلى مسح إجاباتك المحفوظة من هذا الجهاز وإعادتك إلى البداية. هل تريد المتابعة؟",
+  storageNote: "تُحفظ النتائج فقط في هذا المتصفح وعلى هذا الجهاز. استخدام متصفح أو جهاز مختلف، أو مسح بيانات المتصفح، لن ينقلها.",
+  resumeNote: "مرحبًا بعودتك — أعدنا تقدمك المحفوظ من هذا الجهاز.",
+  aboutTitle: "عن هذا الاختبار",
+  aboutPurposeTitle: "الغرض",
+  aboutPurposeText: "صُمم هذا التقييم لمساعدتك على فهم فئة أدوات الذكاء الاصطناعي التي قد تناسب أهدافك بشكل أفضل — سواء كانت البحث، أو الكتابة، أو البرمجة، أو التصميم، أو تحليل البيانات والمستندات — بناءً على طريقة عملك وتفكيرك. إنه نقطة انطلاق لاستكشاف أدوات الذكاء الاصطناعي، وليس حكمًا نهائيًا.",
+  aboutHowTitle: "كيف تعمل التوصية",
+  aboutHowText: "أثناء إجابتك عن الأسئلة الأربعة عشر، تُمنح كل إجابة نقاطًا لواحدة أو أكثر من الفئات الخمس، كما تساعد بعض الإجابات في تقدير مستوى خبرتك. تتم جميع عمليات الحساب هذه محليًا داخل متصفحك: تُعرض الفئة الأعلى نقاطًا كتوصيتك الرئيسية، إلى جانب مستواك التقديري وبعض المهارات التي تستحق التطوير لاحقًا.",
+  aboutPrivacyTitle: "نهج الخصوصية",
+  aboutPrivacyText: "لا يتطلب هذا الاختبار إنشاء حساب، ولا يُرسل أي بيانات إلى خادم خارجي، ولا يستخدم أي مفاتيح API أو تخزينًا سحابيًا. تُحفظ إجاباتك ونتائجك محليًا فقط داخل متصفحك على هذا الجهاز، ويمكنك مسحها في أي وقت عبر خيار «البدء من جديد». الأسئلة عامة ولا تطلب أي معلومات شخصية حساسة.",
+  footerPrivacy: "لا حساب، لا خادم، لا تتبع — كل شيء يحدث داخل متصفحك.",
+  levels: {
+    beginner: "مبتدئ — أنت في بداية استكشاف أدوات الذكاء الاصطناعي. ابدأ بمهام بسيطة وموجهة وأوامر قصيرة.",
+    intermediate: "متوسط — أنت مرتاح في استخدام أدوات الذكاء الاصطناعي للمهام اليومية، وجاهز لتجربة أوامر أكثر تنظيمًا.",
+    advanced: "متقدم — لديك خبرة جيدة، وأنت جاهز لاستكشاف ميزات وتكاملات وسير عمل أكثر تقدمًا."
+  },
+  levelNames: { beginner: "مبتدئ", intermediate: "متوسط", advanced: "متقدم" },
+  categories: {
+    research: {
+      name: "أدوات البحث والتحقق من المعلومات",
+      why: "تشير إجاباتك إلى مهام تحتاج فيها إلى معلومات موثوقة ومدعومة بمصادر — مقارنة وجهات النظر، والتحقق من الحقائق، وتجميع ما تجده. الأدوات المصممة للبحث والاستقصاء المنظم غالبًا ما تناسب هذا النوع من العمل.",
+      skills: ["مهارات البحث المتقدم وتقييم المصادر","تقنيات صياغة الأسئلة للتحقق من الحقائق","تجميع المعلومات من مصادر متعددة","بناء عادات ثابتة للتوثيق والتحقق"]
+    },
+    writing: {
+      name: "أدوات الكتابة وإنشاء المحتوى",
+      why: "تميل إجاباتك نحو إنتاج محتوى مكتوب واضح ومصقول — من الرسائل القصيرة إلى النصوص الأطول. الأدوات التي تركز على الصياغة والتحرير وتحسين النصوص غالبًا ما تناسب هذا النوع من العمل.",
+      skills: ["هندسة الأوامر لضبط النبرة والأسلوب والجمهور","تحرير وتحسين المسودات الناتجة عن الذكاء الاصطناعي","تنظيم النصوص الطويلة","تطوير أسلوب كتابة شخصي ثابت"]
+    },
+    coding: {
+      name: "أدوات البرمجة والأتمتة",
+      why: "تشير إجاباتك إلى بناء أو أتمتة أشياء — نصوص برمجية، أو تطبيقات صغيرة، أو مهام تقنية متكررة. الأدوات التي تركز على توليد الأكواد وشرحها غالبًا ما تناسب هذا النوع من العمل.",
+      skills: ["أنماط صياغة الأوامر لتوليد الأكواد","مراجعة واختبار الأكواد الناتجة عن الذكاء الاصطناعي","أساسيات تصحيح الأخطاء والتحكم بالإصدارات","تقسيم المهام إلى خطوات قابلة للأتمتة"]
+    },
+    design: {
+      name: "أدوات التصميم والإبداع",
+      why: "تميل إجاباتك نحو التفكير البصري والإبداعي — تحويل الأفكار إلى تخطيطات أو نماذج أو مفاهيم بصرية. الأدوات التي تركز على توليد الصور والتصاميم غالبًا ما تناسب هذا النوع من العمل.",
+      skills: ["وصف المفاهيم البصرية بوضوح في الأوامر","تحسين المسودات التصميمية الناتجة عن الذكاء الاصطناعي","أساسيات مبادئ التصميم (التخطيط، الألوان، التسلسل الهرمي)","دمج مسودات الذكاء الاصطناعي مع رؤيتك الإبداعية"]
+    },
+    data: {
+      name: "أدوات تحليل البيانات والمستندات",
+      why: "تشير إجاباتك إلى فهم الأرقام أو جداول البيانات أو المستندات — اكتشاف الأنماط ودعم القرارات بالأدلة. الأدوات التي تركز على تحليل البيانات والمستندات غالبًا ما تناسب هذا النوع من العمل.",
+      skills: ["تنظيم البيانات قبل التحليل","صياغة أسئلة تحليلية واضحة ومحددة","التحقق من صحة الحسابات الناتجة عن الذكاء الاصطناعي","تطوير أساسيات القراءة والتحليل في جداول البيانات"]
+    }
+  },
+  comparisonCriteriaList: [
+    "الدقة واحتياجات التوثيق",
+    "التركيز الإبداعي مقابل التقني",
+    "صيغة الإخراج المفضلة",
+    "مستوى الخبرة في استخدام أدوات الذكاء الاصطناعي",
+    "الراحة مع الأدوات التقنية"
+  ],
+  questions: {
+    q1_text: "ما الذي يصف بشكل أفضل النتيجة الرئيسية التي تريدها من مساعدة الذكاء الاصطناعي؟",
+    q1_o1: "العثور على معلومات دقيقة وتجميع المصادر",
+    q1_o2: "إنتاج محتوى مكتوب، مثل الرسائل أو المقالات أو القصص",
+    q1_o3: "بناء أو أتمتة شيء ما، مثل النصوص البرمجية أو التطبيقات أو سير العمل",
+    q1_o4: "ابتكار أفكار أو تصاميم بصرية",
+    q1_o5: "فهم جداول البيانات أو الأرقام أو المستندات",
+
+    q2_text: "أي مهمة تشبه أكثر عملك أو دراستك اليومية؟",
+    q2_o1: "قراءة الأبحاث ومقارنة وجهات النظر والتحقق من الحقائق",
+    q2_o2: "صياغة التقارير أو المنشورات أو الكتابة الإبداعية",
+    q2_o3: "كتابة الأكواد البرمجية أو إصلاح أخطائها",
+    q2_o4: "تصميم التخطيطات أو العناصر البصرية أو تجارب المستخدم",
+    q2_o5: "تحليل مجموعات البيانات أو مراجعة المستندات والعقود",
+
+    q3_text: "عندما تتخيل استخدام أداة ذكاء اصطناعي، ما الذي يثير حماسك أكثر؟",
+    q3_o1: "الحصول على إجابات موثوقة ومدعومة بمصادر",
+    q3_o2: "تحويل الأفكار إلى نص مصقول بسرعة",
+    q3_o3: "أتمتة المهام التقنية المتكررة",
+    q3_o4: "توليد أفكار أو مفاهيم بصرية وإبداعية",
+    q3_o5: "اكتشاف الأنماط والرؤى في البيانات",
+
+    q4_text: "كيف تصف خبرتك العامة في استخدام أدوات الذكاء الاصطناعي؟",
+    q4_o1: "لم أستخدمها من قبل",
+    q4_o2: "استخدمتها بضع مرات بشكل عرضي",
+    q4_o3: "أستخدمها بانتظام لمهام بسيطة",
+    q4_o4: "أستخدمها كثيرًا وأستكشف ميزاتها المتقدمة",
+
+    q5_text: "أي صيغة إخراج تهمك أكثر؟",
+    q5_o1: "ملخص منظم جيدًا مع المصادر",
+    q5_o2: "نص جاهز للإرسال، مثل بريد إلكتروني أو مستند",
+    q5_o3: "كود برمجي فعّال أو عملية آلية",
+    q5_o4: "نموذج بصري أو صورة أو مسودة تصميم",
+    q5_o5: "رسم بياني أو جدول أو تحليل واضح",
+
+    q6_text: "ما مدى راحتك مع الأدوات التقنية، مثل جداول البيانات أو الأكواد أو قوائم الإعدادات؟",
+    q6_o1: "غير مرتاح على الإطلاق",
+    q6_o2: "مرتاح إلى حد ما مع الأساسيات",
+    q6_o3: "مرتاح جدًا — أتعمق في الإعدادات والأدوات كثيرًا",
+
+    q7_text: "ما نوع المشروع الذي من المرجح أن تبدأه هذا الشهر؟",
+    q7_o1: "ملخص بحثي أو مراجعة أدبية",
+    q7_o2: "منشور مدونة أو نشرة إخبارية أو قصة",
+    q7_o3: "تطبيق صغير أو نص برمجي أو أتمتة",
+    q7_o4: "ملصق أو نموذج واجهة مستخدم أو مفهوم علامة تجارية",
+    q7_o5: "ميزانية أو تقرير أو تنظيف بيانات",
+
+    q8_text: "ما مدى أهمية الدقة الواقعية وذكر المصادر بالنسبة لعملك؟",
+    q8_o1: "مهمة للغاية — أحتاج إلى الوثوق بكل ادعاء",
+    q8_o2: "مهمة، لكن الصياغة والأسلوب مهمان بالقدر نفسه",
+    q8_o3: "مهمة لصحة المنطق أكثر من المصادر",
+    q8_o4: "أقل أهمية — أهتم أكثر بالتأثير البصري",
+    q8_o5: "مهمة للغاية — القرارات تعتمد على الأرقام",
+
+    q9_text: "أي مما يلي يناسب أكثر طريقتك في إيصال الأفكار؟",
+    q9_o1: "من خلال شرح مكتوب واضح ومنظم",
+    q9_o2: "من خلال العناصر البصرية والتخطيطات والصور",
+    q9_o3: "من خلال نماذج أولية أو عروض عملية",
+    q9_o4: "من خلال الأدلة والنتائج الموثقة",
+    q9_o5: "من خلال الرسوم البيانية والبيانات المنظمة",
+
+    q10_text: "كم مرة تستخدم الأدوات الرقمية أو أدوات الذكاء الاصطناعي بشكل عام؟",
+    q10_o1: "نادرًا",
+    q10_o2: "عدة مرات في الأسبوع",
+    q10_o3: "يوميًا، عبر أدوات عديدة",
+
+    q11_text: "لو أتيح لك فترة بعد ظهر فارغة لتعلم شيء جديد، ماذا تختار؟",
+    q11_o1: "تقنية جديدة للبحث أو التحقق من الحقائق",
+    q11_o2: "دورة في الكتابة أو سرد القصص",
+    q11_o3: "درس تعليمي في البرمجة أو الأتمتة",
+    q11_o4: "أداة تصميم أو بصرية",
+    q11_o5: "مهارة في تحليل البيانات أو جداول البيانات",
+
+    q12_text: "أي جملة تشبهك أكثر؟",
+    q12_o1: "أريد التحقق من الادعاءات قبل أن أثق بها.",
+    q12_o2: "أريد أن تبدو كلماتي واضحة ومقنعة.",
+    q12_o3: "أريد أن يتولى الحاسوب الأعمال المتكررة عني.",
+    q12_o4: "أريد أن تبدو الأمور جميلة وسهلة الاستخدام.",
+    q12_o5: "أريد أن أفهم ما تخبرني به الأرقام.",
+
+    q13_text: "ما شعورك تجاه مشاركة مستندات أو ملاحظات عامة وغير حساسة مع أداة ذكاء اصطناعي للحصول على مساعدة؟",
+    q13_o1: "مرتاح جدًا، طالما لا تتضمن أي معلومات حساسة",
+    q13_o2: "مرتاح إلى حد ما — سأزيل التفاصيل الحساسة أولاً",
+    q13_o3: "أفضّل إبقاء الأمور بسيطة وعامة",
+    q13_o4: "لست متأكدًا بعد",
+
+    q14_text: "ما الذي يجعلك تشعر بأكبر قدر من النجاح بعد استخدام أداة ذكاء اصطناعي؟",
+    q14_o1: "تعلمت شيئًا دقيقًا ومدعومًا بالأدلة",
+    q14_o2: "أنتجت كتابة أفتخر بها",
+    q14_o3: "بنيت أو أصلحت شيئًا تقنيًا",
+    q14_o4: "ابتكرت شيئًا جذابًا بصريًا",
+    q14_o5: "اتخذت قرارًا واثقًا مبنيًا على البيانات"
+  }
+}
+};
+
+/* ---------------------------------------------------------
+   APPLICATION STATE
+--------------------------------------------------------- */
+var DEFAULT_STATE = {
+  lang: "en",
+  page: "landing",      // landing | quiz | results | about
+  currentQuestion: 0,
+  answers: {},           // { q1: optionIndex, ... }
+  finished: false
+};
+
+var state = loadInitialState();
+var restoredFromStorage = false;
+
+function loadInitialState(){
+  var saved = readState();
+  if(saved && typeof saved === "object"){
+    restoredFromStorage = !!(saved.answers && Object.keys(saved.answers).length > 0);
+    var merged = {};
+    for(var k in DEFAULT_STATE){ merged[k] = DEFAULT_STATE[k]; }
+    for(var k2 in saved){ merged[k2] = saved[k2]; }
+    return merged;
+  }
+  var fresh = {};
+  for(var k3 in DEFAULT_STATE){ fresh[k3] = DEFAULT_STATE[k3]; }
+  fresh.answers = {};
+  return fresh;
+}
+
+function save(){
+  persistState(state);
+}
+
+/* ---------------------------------------------------------
+   SCORING
+--------------------------------------------------------- */
+function computeResults(){
+  var scores = { research:0, writing:0, coding:0, design:0, data:0 };
+  var levels = [];
+
+  QUESTIONS.forEach(function(q){
+    var idx = state.answers[q.key];
+    if(idx === undefined || idx === null) return;
+    var opt = q.options[idx];
+    if(!opt) return;
+    if(opt.scores){
+      Object.keys(opt.scores).forEach(function(cat){
+        scores[cat] = (scores[cat] || 0) + opt.scores[cat];
+      });
+    }
+    if(typeof opt.level === "number"){
+      levels.push(opt.level);
+    }
+  });
+
+  var topCategory = CATEGORIES[0];
+  var topScore = -1;
+  CATEGORIES.forEach(function(cat){
+    if(scores[cat] > topScore){
+      topScore = scores[cat];
+      topCategory = cat;
+    }
+  });
+
+  var avgLevel = levels.length ? (levels.reduce(function(a,b){return a+b;},0) / levels.length) : 2;
+  var roundedLevel = Math.round(avgLevel);
+  if(roundedLevel < 1) roundedLevel = 1;
+  if(roundedLevel > 3) roundedLevel = 3;
+  var levelKey = roundedLevel === 1 ? "beginner" : (roundedLevel === 2 ? "intermediate" : "advanced");
+
+  var maxScore = 0;
+  CATEGORIES.forEach(function(cat){ if(scores[cat] > maxScore) maxScore = scores[cat]; });
+
+  return { scores: scores, topCategory: topCategory, levelKey: levelKey, maxScore: maxScore || 1 };
+}
+
+/* ---------------------------------------------------------
+   RENDERING HELPERS
+--------------------------------------------------------- */
+function tr(){ return T[state.lang]; }
+function esc(str){
+  var div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function setPage(page){
+  state.page = page;
+  save();
+  render();
+  window.scrollTo(0,0);
+}
+
+function setLang(lang){
+  state.lang = lang;
+  save();
+  render();
+}
+
+/* ---------------------------------------------------------
+   PAGE RENDERERS
+--------------------------------------------------------- */
+function renderLanding(){
+  var t = tr();
+  var html = '';
+  html += '<div class="card landing-hero">';
+  html += '<h1>' + esc(t.appName) + '</h1>';
+  html += '<p class="tagline">' + esc(t.tagline) + '</p>';
+  html += '<div class="info-row">';
+  html += '<span class="info-pill">📝 ' + esc(t.questionsCount) + '</span>';
+  html += '</div>';
+  if(restoredFromStorage && !state.finished){
+    html += '<div class="privacy-note">🔄 ' + esc(t.resumeNote) + '</div>';
+  }
+  html += '<button type="button" class="btn btn-primary" id="startTestBtn">' + esc(t.startTest) + '</button>';
+  html += '<div class="privacy-note">🔒 ' + esc(t.privacyNoteLanding) + '</div>';
+  html += '</div>';
+  return html;
+}
+
+function renderQuiz(){
+  var t = tr();
+  var q = QUESTIONS[state.currentQuestion];
+  var total = QUESTIONS.length;
+  var progressPct = Math.round(((state.currentQuestion + 1) / total) * 100);
+  var selected = state.answers[q.key];
+
+  var html = '';
+  html += '<div class="card">';
+  html += '<div class="quiz-meta"><span>' + esc(t.questionLabel) + ' ' + (state.currentQuestion+1) + ' ' + esc(t.ofLabel) + ' ' + total + '</span><span>' + progressPct + '%</span></div>';
+  html += '<div class="progress-track" role="progressbar" aria-valuenow="' + progressPct + '" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" style="width:' + progressPct + '%"></div></div>';
+
+  html += '<fieldset style="border:none;padding:0;margin:0;">';
+  html += '<legend class="question-text">' + esc(t.questions[q.key + '_text']) + '</legend>';
+  html += '<ul class="options-list">';
+  q.options.forEach(function(opt, i){
+    var optText = t.questions[q.key + '_' + opt.key];
+    var checked = (selected === i) ? ' checked' : '';
+    html += '<li class="option-item">';
+    html += '<label>';
+    html += '<input type="radio" name="' + q.key + '" value="' + i + '"' + checked + ' data-qkey="' + q.key + '" data-optindex="' + i + '">';
+    html += '<span>' + esc(optText) + '</span>';
+    html += '</label>';
+    html += '</li>';
+  });
+  html += '</ul>';
+  html += '</fieldset>';
+
+  html += '<div class="validation-msg" id="validationMsg" aria-live="polite"></div>';
+
+  html += '<div class="nav-buttons">';
+  html += '<button type="button" class="btn btn-secondary" id="prevBtn"' + (state.currentQuestion === 0 ? ' disabled' : '') + '>' + esc(t.prev) + '</button>';
+  var isLast = state.currentQuestion === total - 1;
+  html += '<button type="button" class="btn btn-primary" id="nextBtn">' + esc(isLast ? t.seeResults : t.next) + '</button>';
+  html += '</div>';
+  html += '</div>';
+  return html;
+}
+
+function renderResults(){
+  var t = tr();
+  var results = computeResults();
+  var cat = t.categories[results.topCategory];
+  var levelText = t.levels[results.levelKey];
+
+  var html = '';
+  html += '<div class="card">';
+  html += '<span class="result-badge">✓ ' + esc(t.resultsBadge) + '</span>';
+  html += '<div>' + esc(t.recommendedCategory) + '</div>';
+  html += '<h2 class="result-category">' + esc(cat.name) + '</h2>';
+
+  html += '<div class="result-section"><h3>' + esc(t.whySelected) + '</h3><p>' + esc(cat.why) + '</p></div>';
+
+  html += '<div class="result-section"><h3>' + esc(t.yourLevel) + '</h3><p>' + esc(levelText) + '</p></div>';
+
+  html += '<div class="result-section"><h3>' + esc(t.suggestedSkills) + '</h3><ul class="skills-list">';
+  cat.skills.forEach(function(s){ html += '<li>' + esc(s) + '</li>'; });
+  html += '</ul></div>';
+
+  html += '<div class="result-section"><h3>' + esc(t.comparisonCriteria) + '</h3><ul class="criteria-list">';
+  t.comparisonCriteriaList.forEach(function(c){ html += '<li>' + esc(c) + '</li>'; });
+  html += '</ul></div>';
+
+  html += '<div class="result-section"><h3>' + esc(t.scoreBreakdown) + '</h3><div class="score-bars">';
+  CATEGORIES.forEach(function(c){
+    var val = results.scores[c] || 0;
+    var pct = Math.round((val / results.maxScore) * 100);
+    html += '<div class="score-bar-row">';
+    html += '<span class="score-bar-label">' + esc(t.categories[c].name) + '</span>';
+    html += '<span class="score-bar-track"><span class="score-bar-fill" style="width:' + pct + '%"></span></span>';
+    html += '<span class="score-bar-value">' + val + '</span>';
+    html += '</div>';
+  });
+  html += '</div></div>';
+
+  html += '<div class="disclaimer-box">⚠️ ' + esc(t.disclaimer) + '</div>';
+
+  html += '<div class="result-actions">';
+  html += '<button type="button" class="btn btn-danger-outline" id="startOverBtn">' + esc(t.startOver) + '</button>';
+  html += '</div>';
+  html += '<div class="storage-note">🔒 ' + esc(t.storageNote) + '</div>';
+  html += '</div>';
+  return html;
+}
+
+function renderAbout(){
+  var t = tr();
+  var html = '';
+  html += '<div class="card">';
+  html += '<h1>' + esc(t.aboutTitle) + '</h1>';
+  html += '<div class="about-section"><h2>' + esc(t.aboutPurposeTitle) + '</h2><p>' + esc(t.aboutPurposeText) + '</p></div>';
+  html += '<div class="about-section"><h2>' + esc(t.aboutHowTitle) + '</h2><p>' + esc(t.aboutHowText) + '</p></div>';
+  html += '<div class="about-section"><h2>' + esc(t.aboutPrivacyTitle) + '</h2><p>' + esc(t.aboutPrivacyText) + '</p></div>';
+  html += '</div>';
+  return html;
+}
+
+/* ---------------------------------------------------------
+   MASTER RENDER
+--------------------------------------------------------- */
+function render(){
+  var t = tr();
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = t.dir;
+  document.title = t.appName;
+
+  document.getElementById("brandText").textContent = t.brandShort;
+  document.getElementById("navHomeBtn").textContent = t.navHome;
+  document.getElementById("navAboutBtn").textContent = t.navAbout;
+  document.getElementById("langSwitchBtn").textContent = t.langSwitchLabel;
+  document.getElementById("navHomeBtn").classList.toggle("active", state.page === "landing" || state.page === "quiz" || state.page === "results");
+  document.getElementById("navAboutBtn").classList.toggle("active", state.page === "about");
+  document.getElementById("siteFooter").textContent = t.footerPrivacy;
+
+  var app = document.getElementById("app");
+  var html = "";
+  if(state.page === "landing"){ html = renderLanding(); }
+  else if(state.page === "quiz"){ html = renderQuiz(); }
+  else if(state.page === "results"){ html = renderResults(); }
+  else if(state.page === "about"){ html = renderAbout(); }
+  else { html = renderLanding(); }
+
+  app.innerHTML = html;
+  attachPageListeners();
+}
+
+/* ---------------------------------------------------------
+   EVENT WIRING
+--------------------------------------------------------- */
+function attachGlobalListeners(){
+  document.getElementById("navHomeBtn").addEventListener("click", function(){
+    if(state.finished){ setPage("results"); }
+    else if(Object.keys(state.answers).length > 0){ setPage("quiz"); }
+    else { setPage("landing"); }
+  });
+  document.getElementById("navAboutBtn").addEventListener("click", function(){ setPage("about"); });
+  document.getElementById("langSwitchBtn").addEventListener("click", function(){
+    setLang(state.lang === "en" ? "ar" : "en");
+  });
+}
+
+function attachPageListeners(){
+  var t = tr();
+
+  var startBtn = document.getElementById("startTestBtn");
+  if(startBtn){
+    startBtn.addEventListener("click", function(){
+      state.page = "quiz";
+      state.currentQuestion = 0;
+      state.finished = false;
+      save();
+      render();
+    });
+  }
+
+  var radios = document.querySelectorAll('input[type="radio"][data-qkey]');
+  radios.forEach(function(r){
+    r.addEventListener("change", function(){
+      var qkey = r.getAttribute("data-qkey");
+      var idx = parseInt(r.getAttribute("data-optindex"), 10);
+      state.answers[qkey] = idx;
+      save();
+      var msg = document.getElementById("validationMsg");
+      if(msg) msg.textContent = "";
+    });
+  });
+
+  var prevBtn = document.getElementById("prevBtn");
+  if(prevBtn){
+    prevBtn.addEventListener("click", function(){
+      if(state.currentQuestion > 0){
+        state.currentQuestion -= 1;
+        save();
+        render();
+      }
+    });
+  }
+
+  var nextBtn = document.getElementById("nextBtn");
+  if(nextBtn){
+    nextBtn.addEventListener("click", function(){
+      var q = QUESTIONS[state.currentQuestion];
+      if(state.answers[q.key] === undefined || state.answers[q.key] === null){
+        var msg = document.getElementById("validationMsg");
+        if(msg) msg.textContent = t.selectPrompt;
+        return;
+      }
+      if(state.currentQuestion < QUESTIONS.length - 1){
+        state.currentQuestion += 1;
+        save();
+        render();
+      }else{
+        state.finished = true;
+        state.page = "results";
+        save();
+        render();
+      }
+    });
+  }
+
+  var startOverBtn = document.getElementById("startOverBtn");
+  if(startOverBtn){
+    startOverBtn.addEventListener("click", function(){
+      if(window.confirm(t.startOverConfirm)){
+        clearPersistedState();
+        var langKeep = state.lang;
+        state = {
+          lang: langKeep,
+          page: "landing",
+          currentQuestion: 0,
+          answers: {},
+          finished: false
+        };
+        restoredFromStorage = false;
+        save();
+        render();
+      }
+    });
+  }
+}
+
+/* ---------------------------------------------------------
+   INIT
+--------------------------------------------------------- */
+attachGlobalListeners();
+render();
+
+})();
+</script>
+</body>
+</html>
