@@ -1,7 +1,7 @@
 
 🤖 Which AI Tool Is Right for You?
 -------------
-Team ONE
+Team ONE 👥
 ------------
 Wahaj Alshahran,
 Sharifah AlDakheel,
