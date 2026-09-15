@@ -46,13 +46,21 @@ The user answers 14 questions about their needs and intended use of AI tools The
 User Flow:
 
 Landing Page → Assessment → Answer Analysis → Results
+
 Technologies Used:
+
 • HTML5 — Application structure
+
 • CSS3 — Styling and responsive design
+
 • JavaScript — Interaction, navigation, and recommendation logic
+
 • LocalStorage — Saving progress and results
+
 • GitHub — Version control and project hosting
+
 📂 Project Structure
+
 Which-AI-Tool-Is-Right-for-You/
 │
 ├── index.html
@@ -65,7 +73,9 @@ Which-AI-Tool-Is-Right-for-You/
 Language Support
 
 The application supports:
+
 • 🇬🇧 English — LTR
+
 • 🇸🇦 العربية — RTL
 Users can switch between the two languages while using the application.
 
@@ -80,8 +90,8 @@ LocalStorage is used to preserve relevant assessment information including user 
 Getting Started: 
 
 1. Clone the repository.
-2. Open the project in Visual Studio Code.
-3. Open index.html in a web browser or use Live Server.
+3. Open the project in Visual Studio Code.
+4. Open index.html in a web browser or use Live Server.
 Application Pages:
 1. Landing Page — Introduces the assessment and allows the user to start.
 2. Assessment — Contains 14 questions, navigation and a progress indicator.
