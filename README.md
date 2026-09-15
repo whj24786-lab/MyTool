@@ -3,15 +3,15 @@
 -------------
 Team ONE
 ------------
-wahaj Alshahran
-Sharifah AlDakheel
-Ghada Alaidi
-Ranya Alsagabi
-Luluwah Alhussaini
-Ghadi Algethami
-Ghaida Aldossary
-Razan ALAnizi
-Wasaif alotaibi
+wahaj Alshahran,
+Sharifah AlDakheel,
+Ghada Alaidi,
+Ranya Alsagabi,
+Luluwah Alhussaini,
+Ghadi Algethami,
+Ghaida Aldossary,
+Razan ALAnizi,
+Wasaif alotaibi.
 -----------------
 
 SDAIA Academy
