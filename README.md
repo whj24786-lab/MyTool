@@ -89,6 +89,9 @@ Project Purpose :
 The project provides a simple and engaging way for users to identify the type of AI tools that may best fit their needs through a short interactive 
 assessment.
 
+Live Demo
+[Click here to open the project](https://whj24786-lab.github.io/MyTool/)
+
 
 Future Improvements
 
