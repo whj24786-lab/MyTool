@@ -69,7 +69,7 @@ Technologies Used:
 ├── script.js
 ├── assets/
 │   └── images/
-└── README.md
+└── README.md```
 
 Language Support
 
