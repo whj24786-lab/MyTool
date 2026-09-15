@@ -1,0 +1,15 @@
+{
+  "name": "ai-tool-quiz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual (EN/AR) client-side assessment that recommends an AI-tool category based on 14 answers. No backend, no database, no accounts — everything runs and stores locally in the browser.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}
