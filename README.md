@@ -39,6 +39,7 @@ Features:
 • About the Test section
 
 🧠 How It Works
+
 The user answers 14 questions about their needs and intended use of AI tools The application analyzes the answers using predefined scoring and recommendation rules then provides a suitable AI tool category.
 
 User Flow:
