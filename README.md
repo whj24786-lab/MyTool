@@ -62,7 +62,7 @@ Technologies Used:
 
 📂 Project Structure
 
-Which-AI-Tool-Is-Right-for-You/
+```Which-AI-Tool-Is-Right-for-You/
 │
 ├── index.html
 ├── style.css
