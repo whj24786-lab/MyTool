@@ -62,14 +62,14 @@ Technologies Used:
 
 📂 Project Structure
 
-```Which-AI-Tool-Is-Right-for-You/
+Which-AI-Tool-Is-Right-for-You/
 │
 ├── index.html
 ├── style.css
 ├── script.js
 ├── assets/
 │   └── images/
-└── README.md```
+└── README.md
 
 Language Support
 
